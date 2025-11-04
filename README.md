@@ -21,8 +21,8 @@ The purpose of this lab is to simulate real-world SOC workflows — from telemet
 
 ## 🧱 Architecture Overview
 
-<img width="1237" height="541" alt="image" src="https://github.com/user-attachments/assets/e68a3171-4d2a-4b25-8712-49d713eb80ac" />
 
+<img width="1411" height="660" alt="Diagrama sem nome drawio" src="https://github.com/user-attachments/assets/5fcc9fae-c007-4a27-b473-c88b3cdea825" />
 
 
 ---
