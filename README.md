@@ -21,19 +21,8 @@ The purpose of this lab is to simulate real-world SOC workflows — from telemet
 
 ## 🧱 Architecture Overview
 
-Attacker
-↓
-Honeypot VM (Windows Server)
-↓
-Azure Monitor Agent (AMA)
-↓
-Log Analytics Workspace (LAW)
-↓
-Microsoft Sentinel (SIEM)
-↓
-GeoIP Watchlist (IP → Location)
-↓
-Attack Map Workbook (Visualization)
+<img width="1237" height="541" alt="image" src="https://github.com/user-attachments/assets/e68a3171-4d2a-4b25-8712-49d713eb80ac" />
+
 
 
 ---
