@@ -39,3 +39,10 @@ SecurityEvent
 | where FailCount >= 4
 | extend DetectedTime = now(), AlertName = "FailedLoginThreshold"
 | project DetectedTime, AlertName, IpAddress, FailCount
+```
+---
+## Alert Showing Up:
+
+<img width="1277" height="648" alt="BF_login" src="https://github.com/user-attachments/assets/7994b084-9452-4785-a3b7-76434b8b32c4" />
+
+
