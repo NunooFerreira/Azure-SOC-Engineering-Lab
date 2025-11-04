@@ -41,42 +41,6 @@ The purpose of this lab is to simulate real-world SOC workflows — from telemet
 
 ---
 
-## 📊 Project Workflow
-
-1. **Deploy Azure VM** – Create and expose a Windows honeypot instance.  
-2. **Generate Events** – Attempt RDP logins (Event ID 4625) to produce failed login logs.  
-3. **Forward Logs** – Use Azure Monitor Agent (AMA) and Data Collection Rules (DCR) to send logs to LAW.  
-4. **Connect Sentinel** – Enable Microsoft Sentinel on the workspace for SIEM capabilities.  
-5. **Enrich Data** – Add GeoIP Watchlist for attacker location mapping.  
-6. **Visualize Attacks** – Build Sentinel Workbook (Attack Map) to show global attack traffic.  
-
----
-
-## 📁 Project Structure
-
-azure-soc-engineering-lab/
-│
-├── /docs
-│ ├── 01-azure-setup.md
-│ ├── 02-honeypot-vm.md
-│ ├── 03-log-analytics-workspace.md
-│ ├── 04-sentinel-setup.md
-│ ├── 05-log-forwarding.md
-│ ├── 06-log-enrichment.md
-│ ├── 07-attack-map-workbook.md
-│ └── 08-results-and-analysis.md
-│
-├── /assets
-│ ├── architecture-diagram.png
-│ ├── attack-map-screenshot.png
-│ └── event-4625-example.png
-│
-└── README.md
-
-
-
----
-
 ## 🔍 Key KQL Queries
 
 **1. View Failed Login Events (4625):**
