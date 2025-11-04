@@ -41,8 +41,9 @@ SecurityEvent
 | project DetectedTime, AlertName, IpAddress, FailCount
 ```
 ---
-## Alert Showing Up:
+## Alert Showing Up in Microsoft Defender XDR:
 
-<img width="1277" height="648" alt="BF_login" src="https://github.com/user-attachments/assets/7994b084-9452-4785-a3b7-76434b8b32c4" />
+<img width="674" height="159" alt="image" src="https://github.com/user-attachments/assets/b3fdbfc0-8e81-48e1-b63a-6a8d8867aa50" />
+
 
 
