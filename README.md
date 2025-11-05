@@ -39,23 +39,5 @@ The purpose of this lab is to simulate real-world SOC workflows — from telemet
 | **GeoIP Watchlist** | Provides geolocation enrichment based on attacker IPs. |
 | **Attack Map Workbook** | Interactive Sentinel dashboard showing global attack origins. |
 
----
 
-## 🔍 Key KQL Queries
-
-**1. View Failed Login Events (4625):**
-```kql
-SecurityEvent
-| where EventID == 4625
-| project TimeGenerated, Computer, Account = tostring(Account), IpAddress = tostring(IpAddress)
-| order by TimeGenerated desc
-
-let GeoIPDB_FULL = _GetWatchlist("geoip");
-SecurityEvent
-| where EventID == 4625
-| where isnotempty(IpAddress)
-| evaluate ipv4_lookup(GeoIPDB_FULL, IpAddress, network)
-| summarize Count = count() by country_name, city_name, lat = todouble(lat), lon = todouble(lon)
-| where isnotempty(lat) and isnotempty(lon)
-| order by Count desc
 
