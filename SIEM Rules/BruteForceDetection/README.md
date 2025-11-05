@@ -41,6 +41,17 @@ SecurityEvent
 | project DetectedTime, AlertName, IpAddress, FailCount
 ```
 ---
+## 📩 Email Automation (summary)
+
+Created a Logic App (Consumption) playbook named PB-Sentinel-BruteForce-Email.
+
+Playbook trigger: When an incident is created (Microsoft Sentinel Incident V3).
+
+Action: Send email via Office 365 Outlook (Send an email V2) connector.
+
+Connected the playbook to the rule through a Sentinel Automation Rule, ensuring an email alert is sent automatically each time the analytic rule generates an incident.
+
+---
 ## Alert Showing Up in Microsoft Defender XDR:
 
 <img width="674" height="159" alt="image" src="https://github.com/user-attachments/assets/b3fdbfc0-8e81-48e1-b63a-6a8d8867aa50" />
