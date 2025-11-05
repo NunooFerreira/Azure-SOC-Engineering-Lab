@@ -43,9 +43,12 @@ SecurityEvent
 ---
 ## 📩 Email Automation
 
-Created a Logic App (Consumption) playbook named PB-Sentinel-BruteForce-Email.
-Playbook trigger: When an incident is created (Microsoft Sentinel Incident V3).
+Created a Logic App playbook.
+
+When an incident is created (Microsoft Sentinel Incident V3).
+
 Action: Send email via Office 365 Outlook (Send an email V2) connector.
+
 Connected the playbook to the rule through a Sentinel Automation Rule, ensuring an email alert is sent automatically each time the analytic rule generates an incident.
 
 ---
