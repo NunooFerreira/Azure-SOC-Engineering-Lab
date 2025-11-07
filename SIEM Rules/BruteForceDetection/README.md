@@ -1,10 +1,10 @@
-# 🔎 Failed Login Threshold - Brute Force Detection
+# Failed Login Threshold - Brute Force Detection
 
 This section documents the configuration and behavior of the **Failed Login Threshold Rule**, designed to detect potential **brute-force attacks** on the Windows honeypot virtual machine deployed in the **Azure SOC Engineering Lab**.
 
 ---
 
-## 🎯 Objective
+## Objective
 
 The rule monitors **failed Windows logon attempts (Event ID 4625)** and triggers an **alert** when the same IP address generates **4 or more failed logins within a 10-minute window**.  
 This pattern is typical of automated password-guessing or credential-stuffing attacks.
@@ -13,7 +13,7 @@ Once triggered, Microsoft Sentinel automatically creates an **incident**, allowi
 
 ---
 
-## ⚙️ Analytics Rule Configuration
+## Analytics Rule Configuration
 
 | Setting | Value |
 |----------|--------|
@@ -27,19 +27,6 @@ Once triggered, Microsoft Sentinel automatically creates an **incident**, allowi
 | **Event Grouping** | All events grouped into a single alert |
 | **Incident Creation** | Enabled |
 
----
-
-## 🧠 KQL Query
-
-```kql
-SecurityEvent
-| where EventID == 4625
-| where isnotempty(IpAddress)
-| summarize FailCount = count() by IpAddress, bin(TimeGenerated, 10m)
-| where FailCount >= 4
-| extend DetectedTime = now(), AlertName = "FailedLoginThreshold"
-| project DetectedTime, AlertName, IpAddress, FailCount
-```
 ---
 ## 📩 Email Automation
 
