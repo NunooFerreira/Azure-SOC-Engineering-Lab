@@ -1,10 +1,10 @@
-# 🔐 Successful Login After Multiple Failed Attempts (Microsoft Sentinel)
+# Successful Login After Multiple Failed Attempts (Microsoft Sentinel)
 
 This section documents the configuration and behavior of the **Successful Login After Multiple Failed Attempts** rule, developed to detect potential **credential compromise** on the Windows honeypot virtual machine deployed within the **Azure SOC Engineering Lab**.
 
 ---
 
-## 🎯 Objective
+## Objective
 
 This rule identifies scenarios where a **successful Windows logon (Event ID 4624)** occurs **shortly after multiple failed attempts (Event ID 4625)** from the **same IP address**.
 
@@ -20,7 +20,7 @@ When triggered, **Microsoft Sentinel** automatically generates an **incident**, 
 
 ---
 
-## ⚙️ Analytics Rule Configuration
+## Analytics Rule Configuration
 
 | Setting | Value |
 |----------|--------|
@@ -35,24 +35,3 @@ When triggered, **Microsoft Sentinel** automatically generates an **incident**, 
 | **Event Grouping** | All correlated events grouped into a single alert |
 | **Incident Creation** | Enabled |
 
----
-
-## 🧠 KQL Query
-
-```kql
-let fails = SecurityEvent
-| where TimeGenerated >= ago(30m)
-| where EventID == 4625
-| where isnotempty(IpAddress)
-| summarize FailCount = count(), LastFail = max(TimeGenerated) by IpAddress;
-let successes = SecurityEvent
-| where TimeGenerated >= ago(30m)
-| where EventID == 4624
-| where isnotempty(IpAddress)
-| project SuccessTime = TimeGenerated, IpAddress, Account;
-successes
-| join kind=inner (fails) on IpAddress
-| where SuccessTime >= LastFail and SuccessTime <= datetime_add('minute', 30, LastFail)
-| extend DetectedTime = now(), AlertName = "SuccessAfterFailures", FailedAttempts = FailCount
-| project DetectedTime, AlertName, IpAddress, Account, FailedAttempts, LastFail, SuccessTime
-| sort by DetectedTime desc
