@@ -1,7 +1,5 @@
 # Failed Login Threshold - Brute Force Detection
 
-This section documents the configuration and behavior of the **Failed Login Threshold Rule**, designed to detect potential **brute-force attacks** on the Windows honeypot virtual machine deployed in the **Azure SOC Engineering Lab**.
-
 ---
 
 ## Objective
