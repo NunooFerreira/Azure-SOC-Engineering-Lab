@@ -24,6 +24,8 @@ This helps the SOC identify when an attacker tries to gain persistence or escala
 | **Trigger Threshold** | ≥ 1 matching event |
 | **Event Grouping** | Group alerts by `AddedMember` or `GroupName` into a single alert |
 | **Incident Creation** | Enabled |
-| **Suppression** | 6 hours (per `AddedMember`) — recommended to avoid alert storms on repeated legitimate changes |
+| **Suppression** | 6 hours (per `AddedMember`) |
 
 ---
+
+## Alert Showing Up in Microsoft Defender XDR:
