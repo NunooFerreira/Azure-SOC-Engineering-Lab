@@ -35,3 +35,7 @@ When triggered, **Microsoft Sentinel** automatically generates an **incident**, 
 | **Event Grouping** | All correlated events grouped into a single alert |
 | **Incident Creation** | Enabled |
 
+## Alert Showing Up in Microsoft Defender XDR:
+
+<img width="1078" height="273" alt="image" src="https://github.com/user-attachments/assets/82a28ff6-0a9f-4d94-8467-8b571244545e" />
+
