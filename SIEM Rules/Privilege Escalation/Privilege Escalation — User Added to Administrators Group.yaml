@@ -1,10 +1,8 @@
 SecurityEvent
-| where TimeGenerated >= ago(24h)
+| where TimeGenerated >= ago(7d)  // extend range to see any events
 | where EventID in (4728, 4732, 4756, 4727)
 | extend xml = parse_xml(EventData)
 | extend DataList = xml.Event.EventData.Data
-// Common XML layout: Data[0] = GroupName, Data[1] = MemberName (added), Data[5] = Subject (actor) — adjust if your schema differs
-| extend GroupName = tostring(DataList[0]), AddedMember = tostring(DataList[1]), Actor = tostring(DataList[5])
-| where GroupName has "Administrators" or GroupName has "S-1-5-32-544" or GroupName has "Builtin"
-| project TimeGenerated, EventID, Computer, GroupName, AddedMember, Actor
-| sort by TimeGenerated desc
+| extend GroupName = tostring(DataList[0]), AddedMember = tostring(DataList[1])
+| project TimeGenerated, EventID, Computer, GroupName, AddedMember, EventData
+| take 20
