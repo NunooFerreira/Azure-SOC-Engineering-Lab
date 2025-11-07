@@ -1,7 +1,5 @@
 # Privilege Escalation — User Added to a Group
 
-This repository documents the configuration and behavior of the **Privilege Escalation** detection rule in Microsoft Sentinel, designed for the **Azure SOC Engineering Lab**.  
-
 The rule alerts when a user account is added to **any security group** (including local or domain groups), helping the SOC detect potential privilege escalation or unauthorized account modifications.
 
 ---
