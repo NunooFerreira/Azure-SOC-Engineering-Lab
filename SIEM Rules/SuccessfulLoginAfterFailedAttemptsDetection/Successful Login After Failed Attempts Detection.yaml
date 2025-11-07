@@ -1,14 +1,16 @@
-let failedLogins = 
-    SecurityEvent
-    | where EventID == 4625
-    | where isnotempty(IpAddress)
-    | summarize FailCount = count(), FirstFail = min(TimeGenerated), LastFail = max(TimeGenerated) by IpAddress, Account;
-let successfulLogins = 
-    SecurityEvent
-    | where EventID == 4624
-    | where isnotempty(IpAddress)
-    | project SuccessTime = TimeGenerated, IpAddress, Account;
-failedLogins
-| join kind=inner (successfulLogins) on IpAddress, Account
-| where SuccessTime between (LastFail .. LastFail + 15m)
-| project IpAddress, Account, FailCount, LastFail, SuccessTime, TimeDifference = SuccessTime - LastFail
+let fails = SecurityEvent
+| where TimeGenerated >= ago(30m)
+| where EventID == 4625
+| where isnotempty(IpAddress)
+| summarize FailCount = count(), LastFail = max(TimeGenerated) by IpAddress;
+let successes = SecurityEvent
+| where TimeGenerated >= ago(30m)
+| where EventID == 4624
+| where isnotempty(IpAddress)
+| project SuccessTime = TimeGenerated, IpAddress, Account;
+successes
+| join kind=inner (fails) on IpAddress
+| where SuccessTime >= LastFail and SuccessTime <= datetime_add('minute', 30, LastFail)
+| extend DetectedTime = now(), AlertName = "SuccessAfterFailures", FailedAttempts = FailCount
+| project DetectedTime, AlertName, IpAddress, Account, FailedAttempts, LastFail, SuccessTime
+| sort by DetectedTime desc
