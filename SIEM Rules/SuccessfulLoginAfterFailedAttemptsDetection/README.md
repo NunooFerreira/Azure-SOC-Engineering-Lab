@@ -1,7 +1,5 @@
 # Successful Login After Multiple Failed Attempts (Microsoft Sentinel)
 
-This section documents the configuration and behavior of the **Successful Login After Multiple Failed Attempts** rule, developed to detect potential **credential compromise** on the Windows honeypot virtual machine deployed within the **Azure SOC Engineering Lab**.
-
 ---
 
 ## Objective
