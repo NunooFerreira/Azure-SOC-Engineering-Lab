@@ -31,14 +31,3 @@ Detect when an account is added to a **security group**.
 
 ---
 
-## KQL Query
-
-```kql
-SecurityEvent
-| where TimeGenerated >= ago(7d)
-| where EventID in (4728, 4732, 4756, 4727)
-| extend xml = parse_xml(EventData)
-| extend DataList = xml.Event.EventData.Data
-| extend GroupName = tostring(DataList[0]), AddedMember = tostring(DataList[1])
-| project TimeGenerated, EventID, Computer, GroupName, AddedMember, EventData
-| take 20
