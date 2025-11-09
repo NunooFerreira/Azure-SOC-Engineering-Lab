@@ -50,10 +50,6 @@ Calculates the time difference between:
 - Current system time  
 - Timestamp of the *last* syslog entry  
 
-### Example Output
-<img width="613" height="38" alt="image" src="https://github.com/user-attachments/assets/253c8586-4125-4aff-8b57-475dfd00ce64" />
-
-
  Large delays (e.g., > 5 minutes) may indicate:
 
 - AMA malfunction  
@@ -64,6 +60,10 @@ Calculates the time difference between:
 ### Why It's Useful
 Ingestion timeliness is critical for detection and response.  
 This script helps verify that telemetry remains real-time.
+
+### Example Output
+<img width="613" height="38" alt="image" src="https://github.com/user-attachments/assets/253c8586-4125-4aff-8b57-475dfd00ce64" />
+
 
 ---
 
