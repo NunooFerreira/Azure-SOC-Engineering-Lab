@@ -102,11 +102,3 @@ This script helps catch parsing issues early.
 
 <img width="696" height="495" alt="image" src="https://github.com/user-attachments/assets/5aca8ebe-9401-4a1b-b7d5-7e9ff44a3be5" />
 
-
-
-
-
-./health_check.sh
-./last_log_delay.sh
-./parser_test.py
-
