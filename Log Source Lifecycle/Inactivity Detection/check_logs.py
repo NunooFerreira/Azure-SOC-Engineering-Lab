@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 import sys
 
 # --------------- CONFIGURAÇÕES -----------------
-WORKSPACE_ID = "0bb55dea-fdff-4b57-a365-6427cb01f963"   # teu workspace ID
+WORKSPACE_ID = "0bb55dea-fdff-4b57-a365-6427cb01f963"   # workspace ID
 MINUTES = 5  # intervalo de tempo para verificar logs
 # ------------------------------------------------
 
