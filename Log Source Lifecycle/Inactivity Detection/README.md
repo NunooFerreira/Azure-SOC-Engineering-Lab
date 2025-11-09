@@ -72,3 +72,13 @@ After I stoped the agent on the VM and waited 5 minutes:
 
 
 <img width="601" height="40" alt="image" src="https://github.com/user-attachments/assets/f141e4f9-e77d-412b-b0b7-cd3e93569ad5" />
+
+Using the Scripts to check if the agent is running that I explained before: 
+
+<img width="704" height="69" alt="image" src="https://github.com/user-attachments/assets/0504a40d-d8ab-41ab-bd62-f29c8244328e" />
+
+And checking Logs on Azure, we see it checks out:
+
+<img width="1188" height="383" alt="image" src="https://github.com/user-attachments/assets/dd2ee433-8512-40a6-9496-e00b9927d9f4" />
+
+The device stopped sending logs at approximately 2025-11-09 21:51:59.947, confirming that the inactivity detection script is functioning as expected.
