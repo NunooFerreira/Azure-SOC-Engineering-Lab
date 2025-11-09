@@ -1,38 +1,26 @@
-# Decommissioning a Log Source in Azure Log Analytics
+# Log Source Inactivity Detection in Azure Log Analytics
 
-This document explains the process used to verify whether a log source is still sending data to Azure Log Analytics and determine if it should be decommissioned.  
-It also includes a brief explanation of the Python script created for this purpose.
+This section documents the process I implemented to automatically verify whether a log source is still sending data to Azure Log Analytics.
+The goal is to detect when a machine becomes inactive so that visibility gaps and telemetry blind spots can be avoided.
 
+I also describe the Python script I created and tested to validate this monitoring workflow.
 ---
 
-## ✅ Overview
+## Overview
 
-During the lifecycle of a SOC environment, some log sources become inactive due to system removal, reinstallation, migration, or misconfiguration.  
-To maintain visibility and avoid unnecessary costs, we created a method to:
+A log source can stop sending logs for many reasons — such as the machine being shut down, misconfigured, reinstalled, or removed from the environment.
+When this happens, the SOC loses visibility, which impacts detection and response capabilities.
 
-1. Query Azure Log Analytics for recent logs  
-2. Detect when a log source stops sending events  
-3. Alert the analyst so the log source can be reviewed or decommissioned  
+To prevent this, I implemented an Inactivity Detection mechanism that automatically monitors the health of each log source.
 
-This is part of the **Log Source Lifecycle Management** process.
+The script performs the following tasks:
+
+Queries Azure Log Analytics for the most recent logs from a specific machine
+Detects when the machine stops sending data within a defined time window
+Alerts me when inactivity is detected so I can investigate the machine or update the SOC documentation
+
 
 ---
-
-## 🧰 Requirements
-
-To run the monitoring script on the Linux VM:
-
-- Python 3  
-- `azure-monitor-query`  
-- `azure-identity`  
-- Log Analytics Workspace **Customer ID**  
-- Log Analytics Workspace **Primary Shared Key**
-
-Install required Python modules:
-
-```bash
-pip install azure-monitor-query azure-identity
-```
 
 ## Authentication
 
@@ -42,7 +30,6 @@ The script uses:
 
 2 - Primary Shared Key
 
-Obtain these with Azure CLI (on your admin machine):
 ```
 az monitor log-analytics workspace show \
   -g <resource-group> -n <workspace-name> --query customerId
@@ -77,10 +64,11 @@ query_workspace() — retrieves log data
 
 When there are logs comming: 
 
---- image.
+<img width="607" height="42" alt="image" src="https://github.com/user-attachments/assets/ac966e5b-f7d1-4468-a117-dfe106b4f0ab" />
+
 
 
 After I stoped the agent on the VM and waited 5 minutes: 
 
 
---- image.
+<img width="601" height="40" alt="image" src="https://github.com/user-attachments/assets/f141e4f9-e77d-412b-b0b7-cd3e93569ad5" />
