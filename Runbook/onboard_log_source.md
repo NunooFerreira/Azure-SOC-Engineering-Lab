@@ -1,47 +1,59 @@
-# Runbook: Onboard a Log Source (Linux syslog via AMA / DCR)
+# Runbook: Onboard a Linux Log Source (Syslog via AMA / DCR)
 
-## Objectivo
-Onboardar uma VM Linux como fonte de logs para o Log Analytics Workspace (LAW) e garantir que os eventos syslog chegam a Microsoft Sentinel.
+## Purpose
+This runbook explains how to onboard a Linux virtual machine and configure it as a log source for the Log Analytics Workspace (LAW), ensuring that syslog events are ingested into Microsoft Sentinel.
 
-## Pré-requisitos
-- Conta Azure com permissões para criar/editar VMs e recursos de Monitor/Sentinel.
-- Resource Group: `RG-SOC-Lab` (exemplo).
-- Workspace: `LAW-SOC` (exemplo).
-- VM Linux criada (ex.: `soc-linux-vm`) com acesso SSH.
+## Prerequisites
+- Azure account with permissions to create/modify VMs and monitoring resources.
+- Resource Group: `RG-SOC-Lab` (example).
+- Log Analytics Workspace: `LAW-SOC` (example).
+- Linux VM created (e.g., `soc-linux-vm`) with SSH access.
 
-## Passos (UI — Azure Portal)
+## Steps (Azure Portal UI)
 
-### 1. Verificar Resource Group e Workspace
-1. Abrir https://portal.azure.com  
-2. Procurar **Resource groups** → confirmar `RG-SOC-Lab`.  
-3. Procurar **Log Analytics workspaces** → confirmar `LAW-SOC`.
+---
 
-### 2. Criar / confirmar VM Linux
-1. Virtual Machines → confirmar `soc-linux-vm` (Ubuntu 22.04).  
-2. Notas: garantir Public IP (temporário), Auto-shutdown ON.
+### 1. Verify Resource Group and Workspace
+1. Open https://portal.azure.com  
+2. Navigate to **Resource groups** → confirm `RG-SOC-Lab`.  
+3. Navigate to **Log Analytics workspaces** → confirm `LAW-SOC`.
 
-### 3. Criar Data Collection Rule (DCR)
-1. Azure Monitor → **Data Collection Rules** → **+ Create**.  
-2. Basics: subscription, RG `RG-SOC-Lab`, name `dcr-syslog-linux`, Platform: Linux.  
-3. Resources → **Add resources** → seleccionar `soc-linux-vm` → Add.  
-4. Collect & Deliver → **Add data source** → **Linux Syslog**.  
-   - Facilities: `auth`, `authpriv`, `daemon`, `user`, `syslog`.  
-   - Severity: `Info, Notice, Warning, Error, Critical`.  
-5. Destination → seleccionar `LAW-SOC`.  
-6. Review + Create → Create.
+---
 
-### 4. Verificar agente e ingestão
-1. Aguardar 2–10 minutos.  
-2. SSH para VM:
+### 2. Create / Validate the Linux VM
+1. Go to **Virtual Machines** → confirm `soc-linux-vm` exists (Ubuntu 22.04 recommended).  
+2. Notes: ensure the VM has a Public IP (temporary is fine) and Auto-shutdown enabled.
+
+---
+
+### 3. Create a Data Collection Rule (DCR)
+1. Go to **Azure Monitor** → **Data Collection Rules** → **+ Create**.  
+2. **Basics**  
+   - Subscription: your subscription  
+   - Resource Group: `RG-SOC-Lab`  
+   - Name: `dcr-syslog-linux`  
+   - Platform: **Linux**  
+3. **Resources** → click **Add resources** → select `soc-linux-vm` → Add.  
+4. **Collect & Deliver** → click **Add data source** → choose **Linux Syslog**.  
+   - Facilities: `auth`, `authpriv`, `daemon`, `user`, `syslog`  
+   - Severities: `Info`, `Notice`, `Warning`, `Error`, `Critical`  
+5. **Destination** → select `LAW-SOC`.  
+6. Click **Review + Create** → **Create**.
+
+---
+
+### 4. Verify the Agent and Log Ingestion
+1. Wait 2–10 minutes for the Azure Monitor Agent (AMA) to initialise.  
+2. SSH into the VM:
    ```bash
    ssh socadmin@<PUBLIC_IP>
    sudo systemctl status azuremonitoragent
    tail -n 20 /var/log/syslog
 ```
-   
-3. No Portal: Log Analytics Workspace (LAW-SOC) → Logs → correr:
-```
+3. In the Azure Portal, go to LAW-SOC → Logs and run:
+
 Syslog
 | where TimeGenerated > ago(30m)
 | sort by TimeGenerated desc
-```
+
+If there are logs, onboarding is successful.
