@@ -21,7 +21,7 @@ This runbook explains how to onboard a Linux virtual machine and configure it as
 ---
 
 ### 2. Create / Validate the Linux VM
-1. Go to **Virtual Machines** → confirm `soc-linux-vm` exists (Ubuntu 22.04 recommended).  
+1. Go to **Virtual Machines** → confirm `soc-linux-vm` exists (Ubuntu 22.04).  
 2. Notes: ensure the VM has a Public IP (temporary is fine) and Auto-shutdown enabled.
 
 ---
@@ -49,7 +49,7 @@ This runbook explains how to onboard a Linux virtual machine and configure it as
    ssh socadmin@<PUBLIC_IP>
    sudo systemctl status azuremonitoragent
    tail -n 20 /var/log/syslog
-```
+   ```
 3. In the Azure Portal, go to LAW-SOC → Logs and run:
 
 Syslog
