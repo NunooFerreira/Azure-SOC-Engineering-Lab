@@ -52,8 +52,13 @@ This runbook explains how to onboard a Linux virtual machine and configure it as
    ```
 3. In the Azure Portal, go to LAW-SOC → Logs and run:
 
-<pre>kql Syslog
+<pre>Syslog
 | where TimeGenerated > ago(30m) 
 | sort by TimeGenerated desc </pre>
 
-If there are logs, onboarding is successful.
+Check for logs commming.
+In my case:
+
+<img width="1231" height="527" alt="image" src="https://github.com/user-attachments/assets/70aaa456-86d2-4e3a-8adc-55c1457ee63a" />
+
+So onboarding is successful.
