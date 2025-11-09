@@ -40,4 +40,12 @@ The purpose of this lab is to simulate real-world SOC workflows — from telemet
 | **Attack Map Workbook** | Interactive Sentinel dashboard showing global attack origins. |
 
 
+## Log Source Lifecycle
 
+This section details the engineering steps for the log source lifecycle, ensuring telemetry is reliably collected, normalized, and maintained for security analysis.
+
+---
+
+## SIEM Rules
+
+This section outlines the custom Analytics Rules configured in Microsoft Sentinel to detect specific attack patterns based on the honeypot data.
