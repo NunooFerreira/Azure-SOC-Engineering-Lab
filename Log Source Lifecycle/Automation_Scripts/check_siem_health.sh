@@ -1,4 +1,3 @@
-#!/bin/bash
 echo "==== Checking Azure Monitor Agent status ===="
 systemctl status azuremonitoragent | grep Active
 
