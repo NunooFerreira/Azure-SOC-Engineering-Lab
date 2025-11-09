@@ -7,7 +7,7 @@ The purpose of this lab is to simulate real-world SOC workflows — from telemet
 
 ---
 
-## 🎯 Objectives
+## Objectives
 
 - Deploy a **Windows honeypot** VM in Azure to attract and capture malicious login attempts.
 - Collect and centralize logs via **Log Analytics Workspace (LAW)**.
@@ -19,7 +19,7 @@ The purpose of this lab is to simulate real-world SOC workflows — from telemet
 
 ---
 
-## 🧱 Architecture Overview
+## Architecture Overview
 
 
 <img width="1411" height="660" alt="Diagrama sem nome drawio" src="https://github.com/user-attachments/assets/5fcc9fae-c007-4a27-b473-c88b3cdea825" />
@@ -27,7 +27,7 @@ The purpose of this lab is to simulate real-world SOC workflows — from telemet
 
 ---
 
-## ⚙️ Components
+## Components
 
 | Component | Description |
 |------------|-------------|
