@@ -73,7 +73,10 @@ After I stoped the agent on the VM and waited 5 minutes:
 
 <img width="601" height="40" alt="image" src="https://github.com/user-attachments/assets/f141e4f9-e77d-412b-b0b7-cd3e93569ad5" />
 
-Using the Scripts to check if the agent is running that I explained before: 
+To confirm whether the Azure Monitor Agent was actually running or not,  
+I used the **SIEM / Agent Health Check** script I created earlier in:
+
+**Script:** [`check_siem_health.sh`](https://github.com/NunooFerreira/Azure-SOC-Engineering-Lab/blob/main/Log%20Source%20Lifecycle/Automation_Scripts/check_siem_health.sh)
 
 <img width="704" height="69" alt="image" src="https://github.com/user-attachments/assets/0504a40d-d8ab-41ab-bd62-f29c8244328e" />
 
