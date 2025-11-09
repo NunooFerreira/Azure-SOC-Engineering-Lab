@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import re
 import json
 import datetime
@@ -22,7 +21,7 @@ if not match:
 
 timestamp, hostname, process, message = match.groups()
 
-# Extract user + IP if present (simulate auth parsing)
+# Extract user + IP
 user_match = re.search(r"user=([A-Za-z0-9_-]+)", raw_log)
 ip_match = re.search(r"ip=([\d\.]+)", raw_log)
 
@@ -38,7 +37,7 @@ print(f"User      : {user}")
 print(f"IP        : {ip}")
 print("=====================\n")
 
-# Build normalized JSON object (like a SIEM would)
+# Build normalized JSON object
 normalized = {
     "timestamp": timestamp,
     "hostname": hostname,
