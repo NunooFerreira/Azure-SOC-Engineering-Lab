@@ -47,15 +47,17 @@ Retrieves and displays the timestamp of the most recent syslog entry.
 
 ### What It Does
 - Reads the last line of /var/log/syslog
-- Extracts only the timestamp portion (e.g., Jan 12 14:03:21)
+- Extracts only the timestamp portion
 - Prints it for quick inspection
 
 ### Why It's Useful
 This script provides a simple way to confirm that syslog is actively writing new entries.
-It is especially useful during troubleshooting steps where you need to verify that logs are still being generated on the system.
+It is especially useful during troubleshooting steps where its need to verify that logs are still being generated on the system.
+If the delay is greater than 300s it shows a red warning.
 
 ### Example Output
 <img width="612" height="97" alt="image" src="https://github.com/user-attachments/assets/4872d573-1cf6-49cf-a287-22d9676b298b" />
+
 
 
 ---
