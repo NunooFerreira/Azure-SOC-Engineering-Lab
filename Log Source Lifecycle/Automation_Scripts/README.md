@@ -55,7 +55,7 @@ This script provides a simple way to confirm that syslog is actively writing new
 It is especially useful during troubleshooting steps where you need to verify that logs are still being generated on the system.
 
 ### Example Output
-<img width="613" height="38" alt="image" src="https://github.com/user-attachments/assets/253c8586-4125-4aff-8b57-475dfd00ce64" />
+<img width="1178" height="632" alt="image" src="https://github.com/user-attachments/assets/f481c6cf-bb70-45b5-a20d-56d2a87cade4" />
 
 ---
 
