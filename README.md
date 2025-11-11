@@ -49,3 +49,10 @@ This section details the engineering steps for the log source lifecycle, ensurin
 ## SIEM Rules
 
 This section outlines the custom Analytics Rules configured in Microsoft Sentinel to detect specific attack patterns based on the honeypot data.
+
+
+
+## Workbook:
+
+<img width="1365" height="645" alt="image" src="https://github.com/user-attachments/assets/107829e1-e415-4609-8914-ea18b6c0dcfb" />
+
