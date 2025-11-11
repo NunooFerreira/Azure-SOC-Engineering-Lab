@@ -38,7 +38,7 @@ If AMA stops working, Sentinel becomes blind.
 This script provides a fast, local diagnostic used in onboarding and troubleshooting workflows.
 
 ### Example Output
-<img width="740" height="491" alt="image" src="https://github.com/user-attachments/assets/7b018118-6585-4dfc-beec-4279a8d76021" />
+<img width="692" height="75" alt="image" src="https://github.com/user-attachments/assets/d6a2c50a-9e5d-401a-98e8-950519100c22" />
 
 ---
 
