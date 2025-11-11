@@ -17,53 +17,45 @@ These tools mimic real-world SIEM operational workflows used by SOC engineering 
 
 ---
 
-#  Script 1 — SIEM / Agent Health Check (`health_check.sh`)
+#  Script 1 — AMA Status & Heartbeat Check (check_siem_health.sh)
 
 ###  Purpose
-Checks whether the Azure Monitor Agent (AMA) is:
+Provides a quick verification of the Azure Monitor Agent (AMA) health by checking whether the service is running, confirming recent heartbeat activity, and reviewing the latest system log events.
 
-- Installed and running  
-- Sending telemetry correctly  
-- Connected to the correct Data Collection Rule (DCR)  
-- Experiencing errors or ingestion failures
 
 ###  What It Checks
-- `ama-logs` service status  
+- AMA service status: Verifies whether azuremonitoragent is active and running correctly. 
 - Recent heartbeat logs  
-- AMA connection metadata  
-- Last ingestion errors  
+- Heartbeat logs: Searches recent system logs for AMA heartbeat events, which indicate that the agent is alive and communicating.
+- Last 10 syslog events: Displays the most recent syslog entries for additional context or troubleshooting.
 
 ###  Why It's Useful
-If AMA stops working, Sentinel becomes blind.  
-This script provides a fast, local diagnostic used in onboarding and troubleshooting workflows.
+This script acts as a fast diagnostic tool during onboarding or troubleshooting, helping determine whether AMA is operational and actively generating heartbeats. It is a lightweight first step before deeper ingestion or DCR checks.
 
 ### Example Output
 <img width="886" height="303" alt="image" src="https://github.com/user-attachments/assets/5c20bd82-c7f3-43cf-8a2f-3855de89efbb" />
 
 ---
 
-# Script 2 — Last Log Ingestion Delay (`last_log_delay.sh`)
+# Script 2 — Last Syslog Timestamp Viewer (last_log_check.sh)
 
 ###  Purpose
-Calculates the time difference between:
-
-- Current system time  
-- Timestamp of the *last* syslog entry  
+Retrieves and displays the timestamp of the most recent syslog entry.
+ 
 
  Large delays (e.g., > 5 minutes) may indicate:
 
-- AMA malfunction  
-- Syslog not writing  
-- DCR misconfiguration  
-- VM resource constraints  
+### What It Does
+- Reads the last line of /var/log/syslog
+- Extracts only the timestamp portion (e.g., Jan 12 14:03:21)
+- Prints it for quick inspection
 
 ### Why It's Useful
-Ingestion timeliness is critical for detection and response.  
-This script helps verify that telemetry remains real-time.
+This script provides a simple way to confirm that syslog is actively writing new entries.
+It is especially useful during troubleshooting steps where you need to verify that logs are still being generated on the system.
 
 ### Example Output
 <img width="613" height="38" alt="image" src="https://github.com/user-attachments/assets/253c8586-4125-4aff-8b57-475dfd00ce64" />
-
 
 ---
 
