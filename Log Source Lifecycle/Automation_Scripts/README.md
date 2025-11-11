@@ -33,7 +33,7 @@ Provides a quick verification of the Azure Monitor Agent (AMA) health by checkin
 This script acts as a fast diagnostic tool during onboarding or troubleshooting, helping determine whether AMA is operational and actively generating heartbeats. It is a lightweight first step before deeper ingestion or DCR checks.
 
 ### Example Output
-<img width="886" height="303" alt="image" src="https://github.com/user-attachments/assets/5c20bd82-c7f3-43cf-8a2f-3855de89efbb" />
+<img width="1178" height="632" alt="image" src="https://github.com/user-attachments/assets/bb113abe-abdd-4033-900d-0106dac7b71b" />
 
 ---
 
@@ -55,7 +55,8 @@ This script provides a simple way to confirm that syslog is actively writing new
 It is especially useful during troubleshooting steps where you need to verify that logs are still being generated on the system.
 
 ### Example Output
-<img width="1178" height="632" alt="image" src="https://github.com/user-attachments/assets/f481c6cf-bb70-45b5-a20d-56d2a87cade4" />
+<img width="612" height="97" alt="image" src="https://github.com/user-attachments/assets/4872d573-1cf6-49cf-a287-22d9676b298b" />
+
 
 ---
 
